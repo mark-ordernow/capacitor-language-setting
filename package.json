@@ -1,6 +1,6 @@
 {
   "name": "@ordernow/capacitor-language",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Set the iOS per-app language (Settings → App → Language) from Capacitor apps",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
