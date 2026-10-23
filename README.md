@@ -28,8 +28,32 @@ npx cap sync
 
 ### iOS
 
-- List every language you support in `CFBundleLocalizations` (Info.plist). iOS only shows Settings → App → Language, and only applies a language, when it is listed there.
-- iOS reads the language at launch: the change shows in system UI from the next launch.
+Declare your app's languages in `ios/App/App/Info.plist` with these keys:
+
+| Key | Type | Value |
+| --- | --- | --- |
+| `CFBundleLocalizations` | Array of strings | **Required.** Every language your app supports, as iOS language identifiers (`en`, `vi`, `zh-Hans`, `pt-BR`…), main language first. iOS only shows Settings → App → Language when it lists more than one language, and only applies a listed language. Without it, `set` has no visible effect. |
+| `CFBundleDevelopmentRegion` | String | The language iOS falls back to when none of the user's languages is listed, usually your main language. Capacitor's template already has it (`en`); change it if your main language differs. |
+
+The codes you pass to `set` must match the `CFBundleLocalizations` entries exactly: Simplified Chinese is `zh-Hans`, not `zh`. Map your web locale codes when they differ.
+
+For example, an app in English, Vietnamese, Simplified Chinese and Korean:
+
+```xml
+<key>CFBundleDevelopmentRegion</key>
+<string>en</string>
+<key>CFBundleLocalizations</key>
+<array>
+	<string>en</string>
+	<string>vi</string>
+	<string>zh-Hans</string>
+	<string>ko</string>
+</array>
+```
+
+- **Nothing else to add.** No `.lproj` folders, no `AppDelegate` or view controller changes: `npx cap sync ios` installs the pod and registers the plugin.
+- **Reading the language back:** [`@capacitor/device`](https://capacitorjs.com/docs/apis/device) `getLanguageCode()` / `getLanguageTag()` return the language set here, and the one picked in Settings.
+- iOS reads the language at launch: system UI follows `set` from the next launch. When the user changes it in Settings, iOS relaunches the app.
 
 ## Usage
 
