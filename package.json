@@ -16,10 +16,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mark-ordernow/capacitor-language.git"
+    "url": "git+https://github.com/mark-ordernow/capacitor-language-setting.git"
   },
   "bugs": {
-    "url": "https://github.com/mark-ordernow/capacitor-language/issues"
+    "url": "https://github.com/mark-ordernow/capacitor-language-setting/issues"
   },
   "funding": {
     "type": "paypal",
@@ -75,5 +75,5 @@
       "src": "ios"
     }
   },
-  "homepage": "https://github.com/mark-ordernow/capacitor-language#readme"
+  "homepage": "https://github.com/mark-ordernow/capacitor-language-setting#readme"
 }
